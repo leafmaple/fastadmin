@@ -184,7 +184,7 @@
             </div>
             <div class="col-lg-5">
                 <form id="contact_form" method="post" action="/d/message/post.html" novalidate="true">
-                    <input type="hidden" name="__httpref__" value="{$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']}">
+                    <input type="hidden" name="__httpref__" value="http://{$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']}">
                     <input type="hidden" name="__diyname__" value="message">
                     {:token()}
                     <div class="col-lg-6">

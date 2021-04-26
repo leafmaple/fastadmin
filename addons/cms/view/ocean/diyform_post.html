@@ -53,28 +53,28 @@
                 <div class="create-form-inner">
                     <div class="create-form-ul">
                             <form id="contactForm" role="form" data-toggle="validator" method="POST">
-                                <input type="hidden" name="__httpref__" value="{$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']}">
+                                <input type="hidden" name="__httpref__" value="http://{$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']}">
                                 <input type="hidden" name="__diyname__" value="{$__DIYFORM__['diyname']}">
                                 {:token()}
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="name">Name<span>*</span></label>
-                                        <input type="text" name="row[name]" class="form-control" id="name" required="">
+                                        <input type="text" name="row[name]" class="form-control" id="name" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="email">E-mail <span>*</span></label>
-                                        <input type="email" name="row[email]" class="form-control" id="email" required="">
+                                        <input type="email" name="row[email]" class="form-control" id="email" required>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="phone">Tel/Whatsapp <span></span></label>
-                                        <input type="text" name="row[phone]" class="form-control" id="phone" required="">
+                                        <input type="text" name="row[phone]" class="form-control" id="phone">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -83,7 +83,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="country">Country</label>
-                                        <input type="text" name="row[country]" class="form-control" id="country" required="">
+                                        <input type="text" name="row[country]" class="form-control" id="country">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -91,8 +91,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="website">Website </label>
-                                        <input type="text" name="row[website]" class="form-control" id="website"
-                                               required="">
+                                        <input type="text" name="row[website]" class="form-control" id="website">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -100,8 +99,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="position">Position</label>
-                                        <input type="text" name="row[position]" class="form-control" id="position"
-                                               required="">
+                                        <input type="text" name="row[position]" class="form-control" id="position">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
@@ -109,7 +107,7 @@
                                     <div class="form-group">
                                         <label for="message">Message <span>*</span></label>
                                         <textarea name="row[message]" id="message " class="form-control index_Message"
-                                                  cols="30" rows="6" required=""></textarea>
+                                                  cols="30" rows="6" required></textarea>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
