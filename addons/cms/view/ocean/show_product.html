@@ -1,0 +1,123 @@
+{layout name="common/layout" /}
+<!-- 面包 -->
+<div class="News_detail">
+    <nav aria-label="breadcrumb">
+        <div class="breadcrumb_box">
+            <div class="container">
+                <ol class="breadcrumb">
+                    {cms:breadcrumb id="item"}
+                    <li class="breadcrumb-item"><a href="{$item.url}">{$item.name}</a></li>
+                    {/cms:breadcrumb}
+                    <li><a href="javascript:" class="text-capitalize">{cms:archives name="title" /}</a></li>
+                </ol>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- 内容 -->
+<div class="product_details">
+    <!-- 产品图 -->
+    <div class="container">
+        <div class="col-lg-6 cp_imgBox">
+            <div class="swiper-container" id="bbbb">
+                <div class="swiper-wrapper">
+                    {volist name="$__ARCHIVES__.images|explode=',',###" id="image"}
+                    <div class="swiper-slide "><img src="{$image}"></div>
+                    {/volist}
+                </div>
+                <!-- 如果需要导航按钮 -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
+            <div class="swiper-container swiper-container-thumbs" id="aaaa" style="margin-top: 0px;">
+                <div class="swiper-wrapper ">
+
+                    {volist name="$__ARCHIVES__.images|explode=',',###" id="image"}
+                    <div class="swiper-slide "><img src="{$image}"></div>
+                    {/volist}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="product_detailstitle">
+                <h3> <b>{cms:archives name="title" /}</b></h3>
+                <div class="bar"></div>
+                <p class="product_detailstxt">{cms:archives name="description" /}</p>
+                <p class="cpxq_txt">call the hotline to learn more</p>
+                <div class="detail_boxbig">
+                    <div class="detail_box">
+                        <img src="__ADDON__/ocean/img/tel (2).png" alt="">
+                        <span>+86 371 55699336</span>
+                    </div>
+                    <div class="detail_box">
+                        <img src="__ADDON__/ocean/img/tel (2).png" alt="">
+                        <span>{$site.company_phone}</span>
+                    </div>
+                </div>
+                <button>
+                    <img src="__ADDON__/ocean/img/liuyanban (2).png" alt="">
+                    leave message
+                </button>
+                <button>
+                    <img src="__ADDON__/ocean/img/liuyanban (4).png" alt="">
+                    Online chat
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--  -->
+<div class="twobox_title">
+    <div class="container">
+        <ul>
+            <li class="twobox_txt active"> Product Description </li>
+            {notempty name="$__ARCHIVES__.technical_parameters"}
+            <li class="twobox_txt"><a href="#one">Technical Parameters </a></li>
+            {/notempty}
+        </ul>
+    </div>
+    <!-- <hr> -->
+</div>
+<div class="product_detailstwobox">
+    <div class="container">
+        <p>
+            {cms:archives name="content" /}
+        </p>
+
+        {notempty name="$__ARCHIVES__.technical_parameters"}
+        <h3>
+            <b> <a id="one">Technical Parameters </a> </b>
+        </h3>
+        <table>
+            {cms:archives name="technical_parameters" /}
+        </table>
+        {/notempty}
+
+    </div>
+</div>
+
+<script data-render="script">
+    var mySwiper = new Swiper('#bbbb', {
+        loop: true, // 循环模式选项
+
+        // 如果需要前进后退按钮
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        thumbs: {
+            swiper: {
+                el: '#aaaa',
+                slidesPerView: 4,
+                spaceBetween: 10,
+                watchSlidesVisibility: true,
+                /*避免出现bug*/
+            },
+        }
+
+    })
+</script>

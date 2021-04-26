@@ -42,11 +42,11 @@ return [
     // 默认时区
     'default_timezone'       => 'PRC',
     // 是否开启多语言
-    'lang_switch_on'         => true,
+    'lang_switch_on'         => false,
     // 默认全局过滤方法 用逗号分隔多个
     'default_filter'         => '',
     // 默认语言
-    'default_lang'           => 'zh-cn',
+    'default_lang'           => 'en',
     // 应用类库后缀
     'class_suffix'           => false,
     // 控制器类后缀
@@ -251,7 +251,7 @@ return [
         // 驱动方式
         'type'     => 'Mysql',
         // 缓存前缀
-        'key'      => 'i3d6o32wo8fvs1fvdpwens',
+        'key'      => 'LylQYdA1HJfKg94RsCPzqMjIGFp8eZc7',
         // 加密方式
         'hashalgo' => 'ripemd160',
         // 缓存有效期 0表示永久缓存
@@ -274,11 +274,11 @@ return [
         //登录页默认背景图
         'login_background'      => "",
         //是否启用多级菜单导航
-        'multiplenav'           => false,
+        'multiplenav'           => true,
         //是否开启多选项卡(仅在开启多级菜单时起作用)
         'multipletab'           => true,
         //后台皮肤,为空时表示使用skin-black-green
-        'adminskin'             => '',
+        'adminskin'             => 'skin-purple-light',
         //后台是否启用面包屑
         'breadcrumb'            => false,
         //是否允许未知来源的插件压缩包

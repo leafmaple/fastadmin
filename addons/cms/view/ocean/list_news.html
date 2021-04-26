@@ -1,0 +1,22 @@
+{layout name="common/layout" /}
+<div class="News_title">
+    <div class="container">
+        <div class="juxing"></div>
+        Product Encyclopedia
+        <div class="juxing"></div>
+    </div>
+</div>
+
+<div class="News_list">
+    <div class="container">
+        {cms:pagelist id="item"}
+        {include file="common/item_news"}
+        {/cms:pagelist}
+    </div>
+</div>
+
+<!-- S 分页 -->
+<nav aria-label="Page navigation example">
+    {cms:pageinfo type="full" /}
+</nav>
+<!-- E 分页 -->

@@ -1,0 +1,39 @@
+{layout name="common/layout" /}
+<!-- 产品标题 -->
+<div class="productCENTER">
+    <div class="row wrapper_box">
+        <div class="container">
+            <div id="tab">
+                <div class="wrapper">
+                    <div class="col-lg-1 alltxt">
+                        <li {if $__CHANNEL__.id==25}class="active"{/if}> <a href="/products.html"> ALL </a></li>
+                    </div>
+                    <div class="col-lg-11">
+                        <div class="tab-box">
+                            <ul class="tab-ul">
+                                {cms:channellist key id="channel" type="son" typeid="25" orderby="weigh" orderway="asc"}
+                                <li {if $channel.is_active}class="active"{/if}> <a href="{$channel.url}">{$channel.name}</a></li>
+                                {/cms:channellist}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="content-box">
+                {cms:pagelist id="item"}
+                {include file="common/item_product" /}
+                {/cms:pagelist}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- S 分页 -->
+<nav aria-label="Page navigation example">
+    {cms:pageinfo type="full" /}
+</nav>
+<!-- E 分页 -->

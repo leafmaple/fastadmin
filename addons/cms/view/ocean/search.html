@@ -1,0 +1,29 @@
+{layout name="common/layout" /}
+
+<div class="News_detail">
+    <!-- 面包屑导航 -->
+    <nav aria-label="breadcrumb">
+        <div class="breadcrumb_box">
+            <div class="container">
+                <ol class="breadcrumb">
+                    {cms:breadcrumb id="item"}
+                    <li class="breadcrumb-item"><a href="{$item.url}">{$item.name}</a></li>
+                    {/cms:breadcrumb}
+                </ol>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- 展示内容 -->
+<div class="container">
+    <div class="search_title">
+        {$total} results found for "<p>{$Think.request.q|htmlentities}</p>"
+    </div>
+    {cms:pagelist id="item"}
+    {include file="common/item_search"}
+    {/cms:pagelist}
+    <!--分页  -->
+    <nav aria-label="Page navigation example">
+        {cms:pageinfo type="full" /}
+    </nav>
+</div>

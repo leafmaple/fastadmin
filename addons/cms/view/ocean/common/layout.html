@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{cms:config name="cms.title"/} - {cms:config name="cms.sitename"/}</title>
+    <meta name="keywords" content="{cms:config name='cms.keywords'/}"/>
+    <meta name="description" content="{cms:config name='cms.description'/}"/>
+    <link rel="stylesheet" href="__ADDON__/ocean/commit/swiper-master/package/swiper-bundle.min.css?v={$site.version}">
+    <link rel="stylesheet" href="__ADDON__/ocean/css/index.css?v={$site.version}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css?v={$site.version}" rel="stylesheet">
+
+    {__STYLE__}
+
+</head>
+
+<body>
+<!-- 最顶部 -->
+<div class="index_top">
+    <div class="container">
+        <div class="col-lg-6">
+            <div class="top_txt">Henan Ocean &nbsp;| &nbsp;</div>
+            <div class="top_txtR"><a href="tel:{$site.company_phone}">Contact Us : {$site.company_phone}</a></div>
+        </div>
+        <div class="col-lg-6"></div>
+    </div>
+</div>
+<!-- logo 搜索框 -->
+<div class="index_logo">
+    <div class="container">
+        <div class="col-lg-5 logo_img">
+            <img src="__ADDON__/ocean/img/logo@2x.png" alt="">
+        </div>
+        <div class="col-lg-7">
+            <div class="input-group">
+                <form action="{:addon_url('cms/search/index')}" method="get">
+                    <input type="text" name="q" class="form-control" data-suggestion-url="{:addon_url('cms/search/suggestion')}" type="text" id="searchinput" value="{$Think.request.q|default=''|htmlentities}"  placeholder="Please enter the product you want to know"/>
+                    {:token('__searchtoken__')}
+                    <button type="submit" class="btn btn-primary"><span class="input-group-addon"><img src="__ADDON__/ocean/img/sous.png" alt="Search"></i></span>
+                    </button>
+                </form>
+            </div>
+            <ul class="search_nav">
+                <li><a href="">Refining project</a></li>
+                <li><a href="">Supercritical extraction</a></li>
+                <li><a href="">Screw oil press</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- 首页导航 -->
+<div class="index_nav">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+
+                        {cms:channellist id="nav" type="top" orderby="weigh" orderway="asc" condition="1=isnav"}
+                        <li {if $nav->is_active} class="active"{/if}><a href="{$nav.url}">{$nav.name}</a></li>
+                        {/cms:channellist}
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </div>
+    </nav>
+</div>
+<!-- banner轮播 -->
+<!-- Swiper -->
+<div id="banner" class="swiper-container">
+    <div class="swiper-wrapper">
+        {cms:blocklist id="block" name="indexfocus" row="3"}
+        <div class="swiper-slide">
+            <img src="{$block.image}" alt="{$block.title}" srcset="">
+        </div>
+        {/cms:blocklist}
+    </div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+<!-- 产品展开导航 -->
+<div id="sideBox">
+    <div class="sideHead">
+        PRODUCTS
+    </div>
+    <div class="sideli_box">
+        {cms:channellist key id="product_nav" type="son" typeid="25" orderby="weigh" orderway="asc"}
+        <div class="sideLi">
+            <div class="sideLih">{$product_nav.name}<span>></span></div>
+            <ul class="sideLiUl">
+                <div class="col-lg-3">
+                    <li><a href="{$product_nav.url}"> <b> {$product_nav.name}</b></a></li>
+                </div>
+                <div class="col-lg-9">
+                    <ul>
+                        {cms:arclist id="item" channel="$product_nav.id" orderby="weigh" orderway="asc" status="normal"}
+                        <li><a href="{$item.url}">{$item.title} </a> |</li>
+                        {/cms:arclist}
+                    </ul>
+                </div>
+            </ul>
+        </div>
+        {/cms:channellist}
+    </div>
+</div>
+
+{__CONTENT__}
+
+<div class="index_footer">
+    <div class="container">
+        <div class="font_box">
+            <div class="col-lg-4 font_sbox">
+                <div class="font_logo">
+                    <img src="__ADDON__/ocean/img/dizhi (2).png" alt="">
+                </div>
+                <div class="font_txt">
+                    <a href="javascirpt:">{$site.company_address}</a>
+                </div>
+            </div>
+            <div class="col-lg-4 font_sbox1">
+                <div class="font_logo">
+                    <img src="__ADDON__/ocean/img/dianhua (2).png" alt="">
+                </div>
+                <div class="font_txt1">
+                    <a href="tel:{$site.company_phone}">{$site.company_phone}</a>
+                </div>
+            </div>
+            <div class="col-lg-4 font_sbox1">
+                <div class="font_logo">
+                    <img src="__ADDON__/ocean/img/xinxi@2x.png" alt="">
+                </div>
+                <div class="font_txt1">
+                    <a href="mailto:{$site.company_email}">{$site.company_email}</a>
+                </div>
+            </div>
+
+        </div>
+        <!-- 尾部nav -->
+        <div class="foot_nav">
+            <div class="col-lg-7 fnav_left">
+                <div class="col-lg-3 nav_title">
+                    <ul class="title_nav">
+                        <p>Navigation</p>
+                        {cms:channellist id="nav" type="top" orderby="weigh" orderway="asc" condition="1=isnav"}
+                        <li><a href="{$nav.url}">{$nav.name}</a></li>
+                        {/cms:channellist}
+                    </ul>
+                </div>
+                <div class="col-lg-9">
+                    <ul class="title_nav">
+                        <p>Product Center</p>
+                        <div class="col-lg-6">
+                            <li><a href="">Pretreatment engineering</a></li>
+                            <li><a href="">Refining project</a></li>
+                            <li><a href="">Supercritical extraction </a></li>
+                            <li><a href="">Rapeseed Oil Project</a></li>
+                            <li><a href="">Corn Oil Project</a></li>
+                            <li><a href=""> Palm Oil Engineering</a></li>
+                        </div>
+                        <div class="col-lg-6 border">
+                            <li><a href="">Palm Oil Engineering</a></li>
+                            <li><a href=""> Soy protein concentrate</a></li>
+                            <li><a href="">Screw oil press</a></li>
+                            <li><a href="">Hydraulic oil press</a></li>
+                            <li><a href="">Poultry feed</a></li>
+                            <li><a href=""> Poultry farming</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <form id="contact_form" method="post" action="/d/message/post.html" novalidate="true">
+                    <input type="hidden" name="__httpref__" value="{$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']}">
+                    <input type="hidden" name="__diyname__" value="message">
+                    {:token()}
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <input type="text" name="row[name]" class="form-control inp-name1" data-error=""  placeholder="Name*">
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <input type="text" name="row[email]" class="form-control" data-error=""  placeholder="Email*">
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <input type="text" name="row[phone]" class="form-control inp-email1" data-error="" placeholder="Phone">
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <input type="text" name="row[country]" class="form-control" data-error=""  placeholder="Country">
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <input type="text" name="row[website]" class="form-control" data-error="" placeholder="Website">
+                        </div><!-- /input-group -->
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="input-group">
+                            <input type="text" name="row[position]" class="form-control" data-error="" placeholder="Position">
+                        </div><!-- /input-group -->
+                    </div>
+                    <textarea name="row[message]" id="message" class="form-control inp-content1 controlmessage"
+                              cols="30" rows="6" required="" data-error="" placeholder="Message*"></textarea>
+                    <button type="submit" class="liuyan message-submit">Submit➜</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="index_end">
+    Copyright: Henan Ocean
+</div>
+<script src="__ADDON__/ocean/js/index.js"></script>
+<script src="__ADDON__/ocean/commit/swiper-master/package/swiper-bundle.min.js?v={$site.version}"></script>
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js?v={$site.version}"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js?v={$site.version}"></script>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js?v={$site.version}"></script>
+
+<script>
+    let swiper = new Swiper('#banner', {
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+    let swiper2 = new Swiper('#swiper2', {
+        slidesPerView: 4,
+        spaceBetween: 80,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+</script>
+
+{__SCRIPT__}
+
+</body>
+</html>

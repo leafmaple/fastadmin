@@ -1,0 +1,71 @@
+{layout name="common/layout" /}
+
+<div class="News_detail">
+    <!-- 面包屑导航 -->
+    <nav aria-label="breadcrumb">
+        <div class="breadcrumb_box">
+            <div class="container">
+                <ol class="breadcrumb">
+                    {cms:breadcrumb id="item"}
+                    <li><a href="{$item.url}" class="text-capitalize">{$item.name} ></a></li>
+                    {/cms:breadcrumb}
+                </ol>
+            </div>
+        </div>
+    </nav>
+    <!-- 详情内容 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 newsdetailt_left">
+                <div class="detailt_titlebox">
+                    <p class="detailt_title">{cms:archives name="title" /}</p>
+                    <p class="detailt_titletime">Release time: {cms:archives name="publishtime|date='Y-m-d',###" /}</p>
+                </div>
+                <p class="News_detailtxt" >
+                    {if $__ARCHIVES__.is_paid_part_of_content || $__ARCHIVES__.ispaid}
+                    {cms:archives name="content" /}
+                    {/if}
+                </p>
+                {cms:prevnext id="prev" type="prev" archives="__ARCHIVES__.id" channel="__CHANNEL__.id"}
+                {/cms:prevnext}
+                {cms:prevnext id="next" type="next" archives="__ARCHIVES__.id" channel="__CHANNEL__.id"}
+                {/cms:prevnext}
+                {if !empty($prev.title) || !empty($next.title)}
+                <div class="Jump_connection">
+                    {if $prev.title}
+                    <p>Previous:&nbsp;<a href="{$prev.url}">&nbsp;{$prev.title}</a></p>
+                    {/if}
+                    {if $next.title}
+                    <p>Next:&nbsp;<a href="{$next.url}">&nbsp;{$next.title}</a></p>
+                    {/if}
+                </div>
+                {/if}
+            </div>
+            <div class="col-lg-4 ">
+                <div class="News_detaillist">
+                    <div class="Newsdetail_listtitle">
+                        <div class="bar"></div>
+                        Recommended Article
+                    </div>
+                    {cms:arclist id="relate" tags="__ARCHIVES__.tags" model="__ARCHIVES__.model_id" row="4" condition="`id`!=$__ARCHIVES__->id"}
+                    <div class="Newsdetail_listbox">
+                        <div class="Newsdetail_listboxtwo">
+                            <div class="Newsdetail_listimgb">
+                                <a href="{$relate.url}"><img src="{$relate.image}" alt="{$relate.title}"></a>
+                            </div>
+                            <div class="Newsdetail_listboxtxt">
+                                <div class="Newsdetail_listTITLE">
+                                    <a href="{$relate.url}">{$relate.title}</a>
+                                </div>
+                                <div class="Newsdetail_listtime">
+                                    {$relate.publishtime|date='Y-m-d',###}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/cms:arclist}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

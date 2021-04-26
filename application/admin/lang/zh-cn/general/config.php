@@ -13,6 +13,7 @@ return [
     'Dictionary'                  => '字典配置',
     'User'                        => '会员配置',
     'Example'                     => '示例分组',
+    'Company'                     => '公司属性',
     'Extend'                      => '扩展属性',
     'String'                      => '字符',
     'Text'                        => '文本',

@@ -1,0 +1,153 @@
+{layout name="common/layout" /}
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=06a9ba25d0ae12310c97b627bd1d76d3"></script>
+<!-- 新闻标题 -->
+
+<div class="News_title">
+    <div class="container">
+        <div class="juxing"></div>
+        {cms:diyform name="name" /}
+        <div class="juxing"></div>
+    </div>
+</div>
+
+<!-- 联系我们内容 -->
+<div class="container">
+    <div class="Contact_Usbox">
+        <div class="col-lg-5">
+            <div class="usborder">
+                <div class="us-bjimg">
+                    <div class="us-bjimgtxt">
+                        <h1> <b>OCEAN</b> </h1>
+                        <div class="bar"> </div>
+                        <div class="pbox">
+                            <p>E-MAIL</p>
+                            <a href="">oceanhn@oceanhn.com</a>
+                        </div>
+                        <div class="pbox">
+                            <p>Dial Number</p>
+                            <a href="">+86 371 55699336</a> <br>
+                            <a href="">+86 15738819095</a>
+                        </div>
+                        <div class="pbox">
+                            <p>Company Adress</p>
+                            <a href="">High-tech development Zone, Zhengzhou, Henan Province, China.</a>
+
+                        </div>
+                        <div class="pbox">
+                            <p>Factory Address</p>
+                            <a href="">Qi County, Kaifeng City, Henan Province</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7 Contact_SMbox">
+            <p class="Usbox_title">Inquiry</p>
+            <div class="sp"></div>
+            <p class="Contact_jianjie">
+                Please feel free to leave your needs here, a competitive quotation
+                will be provided according to your requirement.
+            </p>
+            <div class="online-message ">
+                <div class="create-form-inner">
+                    <div class="create-form-ul">
+                            <form id="contactForm" role="form" data-toggle="validator" method="POST">
+                                <input type="hidden" name="__httpref__" value="{$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']}">
+                                <input type="hidden" name="__diyname__" value="{$__DIYFORM__['diyname']}">
+                                {:token()}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">Name<span>*</span></label>
+                                        <input type="text" name="row[name]" class="form-control" id="name" required="">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">E-mail <span>*</span></label>
+                                        <input type="email" name="row[email]" class="form-control" id="email" required="">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone">Tel/Whatsapp <span></span></label>
+                                        <input type="text" name="row[phone]" class="form-control" id="phone" required="">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="country">Country</label>
+                                        <input type="text" name="row[country]" class="form-control" id="country" required="">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="website">Website </label>
+                                        <input type="text" name="row[website]" class="form-control" id="website"
+                                               required="">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="position">Position</label>
+                                        <input type="text" name="row[position]" class="form-control" id="position"
+                                               required="">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        <label for="message">Message <span>*</span></label>
+                                        <textarea name="row[message]" id="message " class="form-control index_Message"
+                                                  cols="30" rows="6" required=""></textarea>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <button type="submit" class="default-btn-one disabled"
+                                            style="pointer-events: all; cursor: pointer;">Submit
+                                        <i class="las la-arrow-right"></i></button>
+                                    <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="contact_mapbox">
+    <div class="container">
+        <div id="contact_map" class="contact_map">
+        </div>
+    </div>
+</div>
+
+<script data-render="script">
+    var map = new AMap.Map('contact_map', {
+        center: [113.565211, 34.825065],
+        zoom: 15
+    });
+    var marker = new AMap.Marker({
+        position: new AMap.LngLat(113.565211, 34.825065), // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
+    });
+    marker.setLabel({
+        offset: new AMap.Pixel(10, 10), //设置文本标注偏移量
+        content: "<div class='info'>52 Lianhua Street, High-tech Zone, Zhengzhou City</div>", //设置文本标注内容
+        direction: 'right' //设置文本标注方位
+    });
+    map.add(marker)
+    map.setLang('en');
+</script>

@@ -1,0 +1,45 @@
+{layout name="common/layout" /}
+
+<meta name="referrer" content="never">
+<div class="container" id="content-container">
+
+    <div class="row">
+
+        <main class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        正在跳转
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <p><span id="wait">{$remainseconds}</span>秒后将自动跳转到以下链接</p>
+                    <div class="alert alert-warning alert-warning-light">
+                        <a href="{$__ARCHIVES__.outlink}" rel="noreferrer">{$__ARCHIVES__.outlink}</a>
+                    </div>
+                    <div>
+                        <a href="javascript:" class="btn btn-danger" id="abort">中止跳转</a>
+                        <a href="{$__ARCHIVES__.outlink}" class="btn btn-primary">立即跳转</a>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
+<script type="text/javascript">
+    (function () {
+        var wait = document.getElementById('wait');
+        var interval = setInterval(function () {
+            var time = --wait.innerHTML;
+            if (time <= 0) {
+                location.href = "{$__ARCHIVES__.outlink}";
+                clearInterval(interval);
+            }
+        }, 1000);
+        document.getElementById("abort").addEventListener("click", function () {
+            clearInterval(interval);
+        });
+    })();
+</script>
